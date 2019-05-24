@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.applet.Applet;
 PImage pacup,pacdown,pacleft,pacright,pacclose;
+PImage maze;
 private boolean start=false;
 boolean isLeft, isRight, isUp, isDown;  
 pacman pac=new pacman();
@@ -13,6 +14,7 @@ pacdown=loadImage("pacdown.png");
 pacleft=loadImage("pacleft.png");
 pacright=loadImage("pacright.png");
 pacclose=loadImage("pacclose.png");
+maze=loadImage("pacmanmaze.png");
 }
 public void startGame(){
 if(keyPressed&&key==' '){
@@ -47,7 +49,7 @@ boolean setMove(int k, boolean b) {
 void draw(){
   startGame();
 
-background(0);
+image(maze, 0, 0, 700,700);
 
 text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
   if(start){

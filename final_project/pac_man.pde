@@ -31,11 +31,14 @@ if(open<=5){
   
  setPac();
  open++;
-}else{
+}else if(open<=10&&keyPressed){
 
 image(pacclose, x, y, 25, 25);
  open++;
  if(open==10)open=0;
+ }else{
+ setPac();
+
  }
 }
 public int getX(){
