@@ -1,6 +1,6 @@
 public class pacman{
 private int open=0;
-private int x=430;
+private int x=330;
 private int y=423;
 char lastd='r';
 public pacman(){
@@ -8,25 +8,25 @@ public pacman(){
 public void display(){
 if(isUp){
  setFalse('u');
-y-=4;
+y-=3;
 checkBorder();
 }
 if(isDown){
   setFalse('d');
-  y+=4;
+  y+=3;
 checkBorder();
 }
 if(isRight){
   setFalse('r');
-  x+=4;
+  x+=3;
 checkBorder();
 }
 if(isLeft){
   setFalse('l');
- x-=4;
+ x-=3;
 checkBorder();
 }
-if(open<=4){
+if(open<=3){
   
  setPac();
  open++;
@@ -56,7 +56,7 @@ if((y>387&&y<663)||(y<362&&y>124))
 x=61;
   if(x>20&&x<60){
 if(y<362)
-y+=4;
+y+=3;
   }
   if(y>640)//bottom row
 y=640;
@@ -108,6 +108,32 @@ stopMove();
 if(x>460&&x<580)
 if(y>555&&y<614)
 stopMove();
+//top right
+//small rectangle
+if(x>468&&x<579)
+if(y<324&&y>275)
+stopMove();
+//large rectangle
+if(x>458&&x<585)
+if(y<223&&y>136)
+stopMove();
+//top middle
+//t-block
+if(x>270&&x<398)
+if(y<253&&y>200)
+stopMove();
+if(x>302&&x<367)
+if(y<275&&y>251)
+stopMove();
+//top left
+//small rectangle
+if(x>95&&x<205)
+if(y<326&&y>279)
+stopMove();
+//large rectangle
+if(x>87&&x<212)
+if(y<223&&y>140)
+stopMove();
 }
 public void setFalse(char d){
 if(d=='d'){
@@ -148,12 +174,12 @@ lastd='l';
 }
 public void stopMove(){
 if(isUp)
-y+=4;
+y+=3;
 if(isDown)
-y-=4;
+y-=3;
 if(isRight)
-x-=4;
+x-=3;
 if(isLeft)
-x+=4;
+x+=3;
 }
 }
