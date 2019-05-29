@@ -51,6 +51,60 @@ for(int i=109; i<215; i+=35)
  pellets.add(new dots(i,370));
   for(int i=110; i<232; i+=35)
  pellets.add(new dots(i,400));
+  for(int i=110; i<232; i+=35)
+ pellets.add(new dots(i,548));
+  for(int i=110; i<232; i+=35)
+ pellets.add(new dots(i,636));
+  for(int i=269; i<432; i+=35)
+ pellets.add(new dots(i,636));
+ for(int i=468; i<586; i+=35)
+ pellets.add(new dots(i,636));
+ for(int i=110; i<232; i+=35)
+ pellets.add(new dots(i,636));
+ for(int i=269; i<432; i+=35)
+ pellets.add(new dots(i,526));
+  for(int i=269; i<314; i+=35)
+ pellets.add(new dots(i,465));
+  for(int i=380; i<432; i+=35)
+ pellets.add(new dots(i,465));
+  for(int i=269; i<284; i+=35)
+ pellets.add(new dots(i,561));
+  for(int i=269; i<310; i+=35)
+ pellets.add(new dots(i,260));
+ for(int i=377; i<430; i+=35)
+ pellets.add(new dots(i,260));
+  for(int i=269; i<430; i+=35)
+ pellets.add(new dots(i,307));
+  for(int i=269; i<319; i+=35)
+ pellets.add(new dots(i,307));
+  for(int i=377; i<432; i+=35)
+ pellets.add(new dots(i,594));
+  for(int i=414; i<440; i+=35)
+ pellets.add(new dots(i,561));
+  for(int i=472; i<588; i+=35)
+ pellets.add(new dots(i,548));
+  for(int i=472; i<588; i+=35)
+ pellets.add(new dots(i,395));
+  for(int i=472; i<588; i+=35)
+ pellets.add(new dots(i,368));
+  for(int i=472; i<588; i+=35)
+ pellets.add(new dots(i,232));
+  for(int i=472; i<588; i+=35)
+ pellets.add(new dots(i,265));
+  for(int i=472; i<588; i+=35)
+ pellets.add(new dots(i,332));
+ for(int i=478;i<536;i+=35)
+pellets.add(new dots(526,i));
+ for(int i=478;i<536;i+=35)
+pellets.add(new dots(553,i));
+ for(int i=478;i<536;i+=35)
+pellets.add(new dots(581,i));
+ for(int i=478;i<536;i+=35)
+pellets.add(new dots(162,i));
+ for(int i=478;i<536;i+=35)
+pellets.add(new dots(135,i));
+ for(int i=478;i<536;i+=35)
+pellets.add(new dots(107,i));
 }
 public void startGame(){
 if(keyPressed&&key==' '){
