@@ -94,7 +94,7 @@ if(x>270&&x<403)
 if(y>529&&y<586)
 stopMove();
 if(x>300&&x<370)
-if(y>586&&y<624)
+if(y>584&&y<624)
 stopMove();
 //bottom right
 //l-block

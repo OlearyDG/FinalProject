@@ -2,12 +2,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.applet.Applet;
 PImage pacup,pacdown,pacleft,pacright,pacclose;
-PImage maze,dot;
+PImage maze,dot,powerdot;
 private boolean start=false;
 boolean isLeft, isRight, isUp, isDown;  
 pacman pac=new pacman();
 dots bit=new dots(255,425);
-ArrayList<dots> pellets=new ArrayList<dots>();
+ArrayList<dotint> pellets=new ArrayList<dotint>();
+private int powerTime;
 private int score=-100;
 private int dotcount;
 void setup(){
@@ -19,6 +20,7 @@ pacright=loadImage("pacright.png");
 pacclose=loadImage("pacclose.png");
 maze=loadImage("pacmanmaze.png");
 dot=loadImage("dot.png");
+powerdot=loadImage("superdot.png");
 for(int i=138;i<658;i+=35)
 pellets.add(new dots(236,i));
 for(int i=270; i<420; i+=35)
@@ -105,6 +107,10 @@ pellets.add(new dots(162,i));
 pellets.add(new dots(135,i));
  for(int i=478;i<536;i+=35)
 pellets.add(new dots(107,i));
+pellets.add(new powerDot(70,628));
+pellets.add(new powerDot(70,138));
+pellets.add(new powerDot(602,138));
+pellets.add(new powerDot(602,628));
 }
 public void startGame(){
 if(keyPressed&&key==' '){
@@ -137,6 +143,7 @@ boolean setMove(int k, boolean b) {
   }
 }
 void draw(){
+  
   startGame();
 background(maze);
 text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
@@ -145,7 +152,7 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
     score=9999999;
     text(score,590,26);
     pac.display();
-    for(dots x: pellets)
+    for(dotint x: pellets)
      x.display();
    // bit.display();
 //}

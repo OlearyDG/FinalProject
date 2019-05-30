@@ -1,4 +1,4 @@
-public class dots{
+public class dots implements dotint{
 //dots are to be sized 15x15 pixels
   private int x=0,y=0;
   private boolean eat=false,check=true;
