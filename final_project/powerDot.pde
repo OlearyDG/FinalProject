@@ -6,11 +6,10 @@ public powerDot(int px,int py){
   Py=py;
 }
 public void display(){
-if(check){
+if(check)
   eaten();
-}else if(!eat){
+if(!eat)
   image(powerdot,Px,Py,25,25);
-}
 }
 public void eaten(){
 if(pac.getX()+13>=Px&&pac.getX()<=Px+15)
@@ -24,5 +23,8 @@ check=false;
 }
 public boolean getPower(){
 return power;
+}
+public void setpower(){
+power=false;
 }
 }

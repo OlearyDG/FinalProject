@@ -3,12 +3,13 @@ import java.awt.Graphics;
 import java.applet.Applet;
 PImage pacup,pacdown,pacleft,pacright,pacclose;
 PImage maze,dot,powerdot;
+PImage bghost,rghost,pghost,oghost,powghost;
 private boolean start=false;
 boolean isLeft, isRight, isUp, isDown;  
 pacman pac=new pacman();
 dots bit=new dots(255,425);
 ArrayList<dotint> pellets=new ArrayList<dotint>();
-private int powerTime;
+private int powerTime=-500;
 private int score=-100;
 private int dotcount;
 void setup(){
@@ -21,6 +22,11 @@ pacclose=loadImage("pacclose.png");
 maze=loadImage("pacmanmaze.png");
 dot=loadImage("dot.png");
 powerdot=loadImage("superdot.png");
+pghost=loadImage("pinkghost.png");
+rghost=loadImage("redghost.png");
+oghost=loadImage("orangeghost.png");
+bghost=loadImage("blueghost.png");
+powghost=loadImage("powerghost.png");
 for(int i=138;i<658;i+=35)
 pellets.add(new dots(236,i));
 for(int i=270; i<420; i+=35)
@@ -111,6 +117,7 @@ pellets.add(new powerDot(70,628));
 pellets.add(new powerDot(70,138));
 pellets.add(new powerDot(602,138));
 pellets.add(new powerDot(602,628));
+dotcount=pellets.size();
 }
 public void startGame(){
 if(keyPressed&&key==' '){
@@ -152,8 +159,13 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
     score=9999999;
     text(score,590,26);
     pac.display();
-    for(dotint x: pellets)
+    for(dotint x: pellets){
      x.display();
+     if(x.getPower()){
+     powerTime=millis()+4000;
+     x.setpower();
+    }
+  }
    // bit.display();
 //}
 }

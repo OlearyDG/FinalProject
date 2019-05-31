@@ -24,4 +24,9 @@ check=false;
 public String toString(){
 return x+" "+y;
 }
+public boolean getPower(){
+  return false;
+}
+public void setpower(){
+}
 }
