@@ -1,44 +1,36 @@
-public class pacman{
-private int open=0;
-private int x=330;
-private int y=423;
-char lastd='r';
-public pacman(){
+public class ghosts{
+//1=red, 2=blue, 3=pink, 4=orange, 5=power
+private int gcolor=0;
+private int x=398;
+private int y=451;
+private boolean start=false,move=true;
+private double di=Math.random();
+private int oft=(int)Math.random()*2000+3000;
+private int time=5000;
+private int speed=2;
+  public ghosts(int c){
+    gcolor=c;
 }
 public void display(){
-if(isUp){
- setFalse('u');
-y-=3;
-checkBorder();
+  if(start){
+  y-=speed;
+  if(y<=275)
+  start=false;
+  }
+if(millis()>=time)
+oftCheck();
+if(move){
+if(di<=.25)
+x+=speed;
+else if(di>=.251&&di<=.5)
+x-=speed;
+else if(di>=.51&&di<=.75)
+y-=speed;
+else
+y+=speed;
 }
-if(isDown){
-  setFalse('d');
-  y+=3;
 checkBorder();
-}
-if(isRight){
-  setFalse('r');
-  x+=3;
-checkBorder();
-}
-if(isLeft){
-  setFalse('l');
- x-=3;
-checkBorder();
-}
-if(open<=3){
-  
- setPac();
- open++;
-}else if(open<=10&&keyPressed){
-
-image(pacclose, x, y, 25, 25);
- open++;
- if(open==10)open=0;
- }else{
- setPac();
-
- }
+image(checkGhost(), x, y, 25, 25);
 }
 public int getX(){
 return x;
@@ -48,9 +40,9 @@ return y;
 }
 public void checkBorder(){
 if(x<0)
-x=675;
+stopMove();
 if(x>675)
-x=0;
+stopMove();
   if(x>0&&x<61)//left columns
 if((y>387&&y<663)||(y<362&&y>124))
 stopMove();
@@ -135,51 +127,32 @@ if(x>87&&x<212)
 if(y<223&&y>140)
 stopMove();
 }
-public void setFalse(char d){
-if(d=='d'){
-isLeft=false;
-isRight=false;
-isUp=false;
-}else if (d=='u'){
-isLeft=false;
-isRight=false;
-isDown=false;
-}else if (d=='r'){
-isLeft=false;
-isUp=false;
-isDown=false;
-}else if (d=='l'){
-isUp=false;
-isRight=false;
-isDown=false;
-}
-}
-public void setPac(){
-  if(isUp||lastd=='u'){
-image(pacup, x, y, 25,25);
-lastd='u';
-  }
-  if(isDown||lastd=='d'){
-image(pacdown, x, y, 25,25);
-lastd='d';
-  }
-  if(isRight||lastd=='r'){
-image(pacright, x, y, 25,25);
-lastd='r';
-  }
-  if(isLeft||lastd=='l'){
-image(pacleft, x, y, 25,25);
-lastd='l';
-  }
-}
 public void stopMove(){
-if(isUp)
-y+=3;
-if(isDown)
-y-=3;
-if(isRight)
-x-=3;
-if(isLeft)
-x+=3;
+if(di<=.25)
+x-=speed;
+if(di>=.251&&di<=.5)
+x+=speed;
+if(di>=.51&&di<=.75)
+y+=speed;
+if(di>=.751)
+y-=speed;
+di=Math.random();
+}
+public PImage checkGhost(){
+if(gcolor==1)
+return rghost;
+else if(gcolor==2)
+return bghost;
+else if(gcolor==3)
+ return pghost;
+else if(gcolor==4)
+return oghost;
+else
+return powghost;
+}
+public void oftCheck(){
+di=Math.random();
+  time=millis()+oft;
+  System.out.println(time);
 }
 }

@@ -12,8 +12,8 @@ if(!eat)
   image(powerdot,Px,Py,25,25);
 }
 public void eaten(){
-if(pac.getX()+13>=Px&&pac.getX()<=Px+15)
-if(pac.getY()+13>=Py&&pac.getY()<=Py+15){
+if(pac.getX()+13>=Px&&pac.getX()<=Px+13)
+if(pac.getY()+13>=Py&&pac.getY()<=Py+13){
 eat=true;
 power=true;
 score+=100;

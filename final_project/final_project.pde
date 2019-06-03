@@ -9,7 +9,9 @@ boolean isLeft, isRight, isUp, isDown;
 pacman pac=new pacman();
 dots bit=new dots(255,425);
 ArrayList<dotint> pellets=new ArrayList<dotint>();
+ArrayList<ghosts> ghost=new ArrayList<ghosts>();
 private int powerTime=-500;
+private int ghostTime;
 private int score=-100;
 private int dotcount;
 void setup(){
@@ -118,6 +120,10 @@ pellets.add(new powerDot(70,138));
 pellets.add(new powerDot(602,138));
 pellets.add(new powerDot(602,628));
 dotcount=pellets.size();
+ghost.add(new ghosts(1));
+ghost.add(new ghosts(2));
+ghost.add(new ghosts(3));
+ghost.add(new ghosts(4));
 }
 public void startGame(){
 if(keyPressed&&key==' '){
@@ -166,6 +172,7 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
      x.setpower();
     }
   }
-   // bit.display();
+  for(ghosts x:ghost)
+  x.display();
 //}
 }
