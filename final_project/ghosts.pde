@@ -3,11 +3,13 @@ public class ghosts{
 private int gcolor=0;
 private int x=398;
 private int y=451;
+private int tempx, tempy;
 private boolean start=false,move=true;
 private double di=Math.random();
 private int oft=(int)Math.random()*2000+3000;
 private int time=5000;
 private int speed=2;
+private boolean check1=false;
   public ghosts(int c){
     gcolor=c;
 }
@@ -150,9 +152,30 @@ return oghost;
 else
 return powghost;
 }
+public boolean eaten(){
+if(pac.getX()+13>=x&&pac.getX()<=x+13)
+if(pac.getY()+13>=y&&pac.getY()<=y+13){
+  lives--;
+  start=false;
+  return true;
+}
+return false;
+}
 public void oftCheck(){
 di=Math.random();
   time=millis()+oft;
   System.out.println(time);
+}
+void ghostDeathSet(){
+tempx=x;
+tempy=y;
+check1=true;
+}
+boolean getCheck(){
+return check1;
+}
+void ghostDeath(){
+x=tempx;
+y=tempy;
 }
 }

@@ -13,8 +13,8 @@ if(check)
   image(dot,x,y,15,15);
 }
 public void eaten(){
-if(pac.getX()+13>=x&&pac.getX()<=x+15)
-if(pac.getY()+13>=y&&pac.getY()<=y+15){
+if(pac.getX()+13>=x&&pac.getX()<=x+13)
+if(pac.getY()+13>=y&&pac.getY()<=y+13){
 eat=true;
 score+=100;
 dotcount--;

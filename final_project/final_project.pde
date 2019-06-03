@@ -5,7 +5,8 @@ PImage pacup,pacdown,pacleft,pacright,pacclose;
 PImage maze,dot,powerdot;
 PImage bghost,rghost,pghost,oghost,powghost;
 private boolean start=false;
-boolean isLeft, isRight, isUp, isDown;  
+boolean isLeft, isRight, isUp, isDown;
+private int lives=3;
 pacman pac=new pacman();
 dots bit=new dots(255,425);
 ArrayList<dotint> pellets=new ArrayList<dotint>();
@@ -29,6 +30,38 @@ rghost=loadImage("redghost.png");
 oghost=loadImage("orangeghost.png");
 bghost=loadImage("blueghost.png");
 powghost=loadImage("powerghost.png");
+}
+public void startGame(){
+if(keyPressed&&key==' '){
+  start=true;
+}
+}
+void keyPressed() {
+  setMove(keyCode, true);
+}
+ 
+void keyReleased() {
+  setMove(keyCode, false);
+}
+boolean setMove(int k, boolean b) {
+  switch (k) {
+  case UP:
+    return isUp = b;
+ 
+  case DOWN:
+    return isDown = b;
+ 
+  case LEFT:
+    return isLeft = b;
+ 
+  case RIGHT:
+    return isRight = b;
+ 
+  default:
+    return b;
+  }
+}
+void restart(){
 for(int i=138;i<658;i+=35)
 pellets.add(new dots(236,i));
 for(int i=270; i<420; i+=35)
@@ -125,42 +158,12 @@ ghost.add(new ghosts(2));
 ghost.add(new ghosts(3));
 ghost.add(new ghosts(4));
 }
-public void startGame(){
-if(keyPressed&&key==' '){
-  start=true;
-}
-}
-void keyPressed() {
-  setMove(keyCode, true);
-}
- 
-void keyReleased() {
-  setMove(keyCode, false);
-}
-boolean setMove(int k, boolean b) {
-  switch (k) {
-  case UP:
-    return isUp = b;
- 
-  case DOWN:
-    return isDown = b;
- 
-  case LEFT:
-    return isLeft = b;
- 
-  case RIGHT:
-    return isRight = b;
- 
-  default:
-    return b;
-  }
-}
 void draw(){
   
   startGame();
 background(maze);
 text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
- // if(start){
+ if(start){
     if(score>9999999)
     score=9999999;
     text(score,590,26);
@@ -174,5 +177,13 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
   }
   for(ghosts x:ghost)
   x.display();
-//}
+}else if(ghost.get(0).eaten()||ghost.get(1).eaten()||ghost.get(2).eaten()||ghost.get(3).eaten()){
+if(pac.getCheck())
+
+for(ghosts x:ghost)
+x.
+  int deathtime=millis()+3000;
+if(millis()>=deathtime)
+
+}
 }

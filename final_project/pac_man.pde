@@ -1,9 +1,15 @@
 public class pacman{
 private int open=0;
-private int x=330;
+private int x=335;
 private int y=423;
+private int tempx, tempy;
 char lastd='r';
+private boolean check1=false;
 public pacman(){
+}
+void resetXY(){
+x=335;
+y=423;
 }
 public void display(){
 if(isUp){
@@ -181,5 +187,17 @@ if(isRight)
 x-=3;
 if(isLeft)
 x+=3;
+}
+void pacDeathSet(){
+tempx=x;
+tempy=y;
+check1=true;
+}
+boolean getCheck(){
+return check1;
+}
+void pacDeath(){
+x=tempx;
+y=tempy;
 }
 }
