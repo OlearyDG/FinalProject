@@ -164,6 +164,9 @@ void draw(){
 background(maze);
 text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
  if(start){
+   restart();
+   start=false;
+ }
     if(score>9999999)
     score=9999999;
     text(score,590,26);
@@ -173,17 +176,18 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
      if(x.getPower()){
      powerTime=millis()+4000;
      x.setpower();
+     System.out.println(powerTime);
+     for(ghosts z:ghost)
+     z.setPowertru();
     }
-  }
+    }
+if(millis()>=powerTime){ 
+       System.out.println("power false");
+       System.out.println(powerTime);
+       for(ghosts z:ghost)
+z.setPowerfal();
+}
   for(ghosts x:ghost)
   x.display();
-}else if(ghost.get(0).eaten()||ghost.get(1).eaten()||ghost.get(2).eaten()||ghost.get(3).eaten()){
-if(pac.getCheck())
 
-for(ghosts x:ghost)
-x.
-  int deathtime=millis()+3000;
-if(millis()>=deathtime)
-
-}
 }

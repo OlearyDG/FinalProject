@@ -193,7 +193,7 @@ tempx=x;
 tempy=y;
 check1=true;
 }
-boolean getCheck(){
+boolean getCheck(){ 
 return check1;
 }
 void pacDeath(){

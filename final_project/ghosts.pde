@@ -9,7 +9,7 @@ private double di=Math.random();
 private int oft=(int)Math.random()*2000+3000;
 private int time=5000;
 private int speed=2;
-private boolean check1=false;
+private boolean check1=false, power=false;
   public ghosts(int c){
     gcolor=c;
 }
@@ -32,7 +32,16 @@ else
 y+=speed;
 }
 checkBorder();
+if(!power)
 image(checkGhost(), x, y, 25, 25);
+else
+image(powghost, x, y, 25, 25);
+}
+public void setPowerfal(){
+power=false;
+}
+public void setPowertru(){
+power=true;
 }
 public int getX(){
 return x;
@@ -164,7 +173,6 @@ return false;
 public void oftCheck(){
 di=Math.random();
   time=millis()+oft;
-  System.out.println(time);
 }
 void ghostDeathSet(){
 tempx=x;
