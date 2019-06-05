@@ -4,7 +4,8 @@ private int x=335;
 private int y=423;
 private int tempx, tempy;
 char lastd='r';
-private boolean check1=false;
+boolean death=false;
+int pactimer;
 public pacman(){
 }
 void resetXY(){
@@ -12,6 +13,7 @@ x=335;
 y=423;
 }
 public void display(){
+  if(pac.pacDeath()==false){
 if(isUp){
  setFalse('u');
 y-=3;
@@ -43,7 +45,7 @@ image(pacclose, x, y, 25, 25);
  if(open==10)open=0;
  }else{
  setPac();
-
+ }
  }
 }
 public int getX(){
@@ -188,16 +190,13 @@ x-=3;
 if(isLeft)
 x+=3;
 }
-void pacDeathSet(){
-tempx=x;
-tempy=y;
-check1=true;
+void deathSet(){
+death=true;
+pactimer=millis()+2000;
 }
-boolean getCheck(){ 
-return check1;
-}
-void pacDeath(){
-x=tempx;
-y=tempy;
+public boolean pacDeath(){
+if(millis()>=pactimer)
+return false;
+return true;
 }
 }

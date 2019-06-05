@@ -62,6 +62,7 @@ boolean setMove(int k, boolean b) {
   }
 }
 void restart(){
+  if(pellets.size()<194&&ghost.size()<4){
 for(int i=138;i<658;i+=35)
 pellets.add(new dots(236,i));
 for(int i=270; i<420; i+=35)
@@ -158,6 +159,7 @@ ghost.add(new ghosts(2));
 ghost.add(new ghosts(3));
 ghost.add(new ghosts(4));
 }
+}
 void draw(){
   
   startGame();
@@ -167,6 +169,7 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
    restart();
    start=false;
  }
+ if (pac.pacDeath()==false){
     if(score>9999999)
     score=9999999;
     text(score,590,26);
@@ -182,12 +185,14 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
     }
     }
 if(millis()>=powerTime){ 
-       System.out.println("power false");
-       System.out.println(powerTime);
        for(ghosts z:ghost)
 z.setPowerfal();
 }
   for(ghosts x:ghost)
   x.display();
 
+}else if(pac.pacDeath()){
+  System.out.println("dead");
+text( "You Died", 310, 366 );
+}
 }

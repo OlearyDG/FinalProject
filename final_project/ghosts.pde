@@ -14,6 +14,7 @@ private boolean check1=false, power=false;
     gcolor=c;
 }
 public void display(){
+if(pac.pacDeath()==false){
   if(start){
   y-=speed;
   if(y<=275)
@@ -37,6 +38,7 @@ image(checkGhost(), x, y, 25, 25);
 else
 image(powghost, x, y, 25, 25);
 }
+}
 public void setPowerfal(){
 power=false;
 }
@@ -54,7 +56,7 @@ if(x<0)
 stopMove();
 if(x>675)
 stopMove();
-  if(x>0&&x<61)//left columns
+  if(x>32&&x<61)//left columns
 if((y>387&&y<663)||(y<362&&y>124))
 stopMove();
   if(x>20&&x<60){
@@ -164,11 +166,15 @@ return powghost;
 public boolean eaten(){
 if(pac.getX()+13>=x&&pac.getX()<=x+13)
 if(pac.getY()+13>=y&&pac.getY()<=y+13){
+  if(!power){
+  pac.deathSet();
+  System.out.println("fdsfdsf");
   lives--;
   start=false;
-  return true;
+  return false;
 }
-return false;
+}
+return true;
 }
 public void oftCheck(){
 di=Math.random();
