@@ -1,7 +1,7 @@
 public class pacman{
 private int open=0;
-private int x=335;
-private int y=423;
+private int x=97;//335;
+private int y=361;//423;
 private int tempx, tempy;
 char lastd='r';
 boolean death=false;
@@ -9,8 +9,8 @@ int pactimer;
 public pacman(){
 }
 void resetXY(){
-x=335;
-y=423;
+x=97;//335;
+y=361;//423;
 }
 public void display(){
   if(pac.pacDeath()==false){

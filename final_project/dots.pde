@@ -21,6 +21,9 @@ dotcount--;
 check=false;
 }
 }
+public void eatReset(){
+eat=false;
+}
 public String toString(){
 return x+" "+y;
 }

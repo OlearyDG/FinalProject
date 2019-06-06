@@ -3,9 +3,10 @@ import java.awt.Graphics;
 import java.applet.Applet;
 PImage pacup,pacdown,pacleft,pacright,pacclose;
 PImage maze,dot,powerdot;
-PImage bghost,rghost,pghost,oghost,powghost;
+PImage bghost,rghost,pghost,oghost,powghost,ghosteye;
 private boolean start=false;
 boolean isLeft, isRight, isUp, isDown;
+boolean gameStart=false;
 private int lives=3;
 pacman pac=new pacman();
 dots bit=new dots(255,425);
@@ -15,6 +16,7 @@ private int powerTime=-500;
 private int ghostTime;
 private int score=-100;
 private int dotcount;
+int deathTimer;
 void setup(){
   size(700, 700);
 pacup=loadImage("pacup.png");
@@ -30,6 +32,7 @@ rghost=loadImage("redghost.png");
 oghost=loadImage("orangeghost.png");
 bghost=loadImage("blueghost.png");
 powghost=loadImage("powerghost.png");
+ghosteye=loadImage("ghosteyes.png");
 }
 public void startGame(){
 if(keyPressed&&key==' '){
@@ -158,6 +161,9 @@ ghost.add(new ghosts(1));
 ghost.add(new ghosts(2));
 ghost.add(new ghosts(3));
 ghost.add(new ghosts(4));
+}else{
+for(dotint x:pellets)
+x.eatReset();
 }
 }
 void draw(){
@@ -166,8 +172,12 @@ void draw(){
 background(maze);
 text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
  if(start){
+   if(!gameStart){
    restart();
    start=false;
+   }else{
+   
+   }
  }
  if (pac.pacDeath()==false){
     if(score>9999999)
@@ -188,11 +198,16 @@ if(millis()>=powerTime){
        for(ghosts z:ghost)
 z.setPowerfal();
 }
-  for(ghosts x:ghost)
+  for(ghosts x:ghost){
   x.display();
-
+   x.eaten(); 
+  }
 }else if(pac.pacDeath()){
+pac.resetXY();
+for(ghosts x:ghost)
+x.resetXY();
   System.out.println("dead");
 text( "You Died", 310, 366 );
+
 }
 }

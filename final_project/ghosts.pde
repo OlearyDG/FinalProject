@@ -1,28 +1,36 @@
 public class ghosts{
-//1=red, 2=blue, 3=pink, 4=orange, 5=power
+//1=red, 2=blue, 3=pink, 4=orange, 5=power, 6=eyes
 private int gcolor=0;
 private int x=398;
 private int y=451;
 private int tempx, tempy;
-private boolean start=false,move=true;
 private double di=Math.random();
 private int oft=(int)Math.random()*2000+3000;
 private int time=5000;
 private int speed=2;
+char dir='q';
+char xdir='q';
 private boolean check1=false, power=false;
+private boolean eyes=false;
   public ghosts(int c){
     gcolor=c;
 }
+void resetXY(){
+x=398;
+y=451;
+}
 public void display(){
 if(pac.pacDeath()==false){
+ /*
   if(start){
   y-=speed;
   if(y<=275)
   start=false;
   }
+  */
+if(!eyes){  
 if(millis()>=time)
 oftCheck();
-if(move){
 if(di<=.25)
 x+=speed;
 else if(di>=.251&&di<=.5)
@@ -31,12 +39,27 @@ else if(di>=.51&&di<=.75)
 y-=speed;
 else
 y+=speed;
-}
 checkBorder();
 if(!power)
 image(checkGhost(), x, y, 25, 25);
 else
 image(powghost, x, y, 25, 25);
+}else {
+  power=true;
+if(x<398)
+x+=speed;
+if(x>398)
+x-=speed;
+if(y<451)
+y+=speed;
+if(y>451)
+y-=speed;
+image(ghosteye, x, y, 25, 25);
+if(x==398&&y==451){
+  power=false;
+eyes=false;
+}
+}
 }
 }
 public void setPowerfal(){
@@ -56,8 +79,8 @@ if(x<0)
 stopMove();
 if(x>675)
 stopMove();
-  if(x>32&&x<61)//left columns
-if((y>387&&y<663)||(y<362&&y>124))
+  if(x>20&&x<61)//left columns
+if((y>360&&y<665)||(y<360&&y>124))
 stopMove();
   if(x>20&&x<60){
 if(y<362)
@@ -160,28 +183,27 @@ else if(gcolor==3)
  return pghost;
 else if(gcolor==4)
 return oghost;
-else
+else if(eyes)
+return ghosteye;
 return powghost;
 }
 public void eaten(){
-  if(pac.getX()+13>=x&&pac.getX()<=x+25)
-  System.out.println("wee wee");
-if(pac.getY()+13>=y&&pac.getY()<=y+25)
-  System.out.println("poo poo");
-/*
-  if(pac.getX()+13>=x&&pac.getX()<=x+25)
-  System.out.println("wee wee");
-if(pac.getY()+13>=y&&pac.getY()<=y+25){
+
+  if(pac.getX()+13>=x&&pac.getX()<=x+13)
+if(pac.getY()+13>=y&&pac.getY()<=y+13){
   if(power==false){
   pac.deathSet();
-  System.out.println("fdsfdsf");
   lives--;
   start=false;
  // return false;
+}else{
+score+=200;
+eyes=true;
+xd=true;
 }
 }
 //return true;
-*/
+
 }
 public void oftCheck(){
 di=Math.random();

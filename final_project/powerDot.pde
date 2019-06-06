@@ -21,6 +21,9 @@ dotcount--;
 check=false;
 }
 }
+public void eatReset(){
+eat=false;
+}
 public boolean getPower(){
 return power;
 }
