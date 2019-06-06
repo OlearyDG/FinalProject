@@ -163,18 +163,25 @@ return oghost;
 else
 return powghost;
 }
-public boolean eaten(){
-if(pac.getX()+13>=x&&pac.getX()<=x+13)
-if(pac.getY()+13>=y&&pac.getY()<=y+13){
-  if(!power){
+public void eaten(){
+  if(pac.getX()+13>=x&&pac.getX()<=x+25)
+  System.out.println("wee wee");
+if(pac.getY()+13>=y&&pac.getY()<=y+25)
+  System.out.println("poo poo");
+/*
+  if(pac.getX()+13>=x&&pac.getX()<=x+25)
+  System.out.println("wee wee");
+if(pac.getY()+13>=y&&pac.getY()<=y+25){
+  if(power==false){
   pac.deathSet();
   System.out.println("fdsfdsf");
   lives--;
   start=false;
-  return false;
+ // return false;
 }
 }
-return true;
+//return true;
+*/
 }
 public void oftCheck(){
 di=Math.random();
