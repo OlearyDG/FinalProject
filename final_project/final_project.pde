@@ -16,7 +16,7 @@ ArrayList<ghosts> ghost=new ArrayList<ghosts>();
 private int powerTime=-500;
 private int score=0;
 private int livesscore=0;
-private int dotcount;
+private int dotcount=-500;
 private boolean show=false;
 int deathTimer;
 void setup(){
@@ -171,6 +171,7 @@ ghost.add(new ghosts(4));
 for(dotint x:pellets){
 x.eatReset();
 x.checkReset();
+dotcount=pellets.size();
   }
   }
 pac.resetXY();
@@ -178,7 +179,6 @@ for(ghosts x:ghost){
 x.resetXY();
 x.escapeSet();
 }
-dotcount=pellets.size();
 }
 if(lives<=0){
 for(dotint x:pellets){
@@ -230,7 +230,7 @@ background(maze);
     lives=3;
     }
     text("Score: "+score,590,26);
-                 pac.display();
+    pac.display();
     for(dotint x: pellets){
      x.display();
      if(x.getPower()){
