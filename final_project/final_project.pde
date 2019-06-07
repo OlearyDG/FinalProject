@@ -10,7 +10,6 @@ boolean gameStart=false;
 boolean check=true;
 private int lives=3;
 pacman pac=new pacman();
-dots bit=new dots(255,425);
 ArrayList<dotint> pellets=new ArrayList<dotint>();
 ArrayList<ghosts> ghost=new ArrayList<ghosts>();
 private int powerTime=-500;

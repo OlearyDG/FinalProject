@@ -21,6 +21,12 @@ y=362;
 }
 public void display(){
 if(pac.pacDeath()==false){
+  if(dotcount==0){
+  power=false;
+  eyes=false;
+  
+  resetXY();
+  }
   if(escape){
   if(x>=275&&x<=418)
   if(y>=299&&y<=405){
