@@ -13,9 +13,9 @@ dots bit=new dots(255,425);
 ArrayList<dotint> pellets=new ArrayList<dotint>();
 ArrayList<ghosts> ghost=new ArrayList<ghosts>();
 private int powerTime=-500;
-private int ghostTime;
-private int score=-100;
+private int score=0;
 private int dotcount;
+private boolean show=false;
 int deathTimer;
 void setup(){
   size(700, 700);
@@ -65,10 +65,12 @@ boolean setMove(int k, boolean b) {
   }
 }
 void restart(){
-  if(pellets.size()<194&&ghost.size()<4){
+  if(pellets.size()<193&&ghost.size()<4){
 for(int i=138;i<658;i+=35)
 pellets.add(new dots(236,i));
-for(int i=270; i<420; i+=35)
+for(int i=270; i<328; i+=35)
+ pellets.add(new dots(i,428));
+ for(int i=359; i<420; i+=35)
  pellets.add(new dots(i,428));
  for(int i=138;i<658;i+=35)
 pellets.add(new dots(445,i));
@@ -157,6 +159,7 @@ pellets.add(new powerDot(70,138));
 pellets.add(new powerDot(602,138));
 pellets.add(new powerDot(602,628));
 dotcount=pellets.size();
+System.out.println(dotcount);
 ghost.add(new ghosts(1));
 ghost.add(new ghosts(2));
 ghost.add(new ghosts(3));
@@ -172,18 +175,17 @@ void draw(){
 background(maze);
 text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
  if(start){
+   show=true;
    if(!gameStart){
    restart();
    start=false;
-   }else{
-   
    }
  }
- if (pac.pacDeath()==false){
+ if (pac.pacDeath()==false&&show){
     if(score>9999999)
     score=9999999;
     text(score,590,26);
-    pac.display();
+                 pac.display();
     for(dotint x: pellets){
      x.display();
      if(x.getPower()){

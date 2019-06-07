@@ -1,8 +1,8 @@
 public class ghosts{
 //1=red, 2=blue, 3=pink, 4=orange, 5=power, 6=eyes
 private int gcolor=0;
-private int x=398;
-private int y=451;
+private int x=331;
+private int y=362;
 private int tempx, tempy;
 private double di=Math.random();
 private int oft=(int)Math.random()*2000+3000;
@@ -12,12 +12,13 @@ char dir='q';
 char xdir='q';
 private boolean check1=false, power=false;
 private boolean eyes=false;
+private boolean escape=true;
   public ghosts(int c){
     gcolor=c;
 }
 void resetXY(){
-x=398;
-y=451;
+x=331;
+y=362;
 }
 public void display(){
 if(pac.pacDeath()==false){
@@ -28,6 +29,17 @@ if(pac.pacDeath()==false){
   start=false;
   }
   */
+  if(escape){
+  if(x>=275&&x<=418)
+  if(y>=299&&y<=405){
+  y-=speed;
+  image(checkGhost(), x, y, 25, 25);
+  }
+  }
+  if(y<=299){
+escape=false;
+}
+if(escape==false){
 if(!eyes){  
 if(millis()>=time)
 oftCheck();
@@ -58,6 +70,7 @@ image(ghosteye, x, y, 25, 25);
 if(x==398&&y==451){
   power=false;
 eyes=false;
+}
 }
 }
 }
@@ -96,7 +109,9 @@ stopMove();
 //ghost box
 if(x>241&&x<429)
 if(y<413&&y>304)
+if(escape==false){
 stopMove();
+}
 //bottom left
 //l-block
 if(x>94&&x<213)
@@ -188,18 +203,17 @@ return ghosteye;
 return powghost;
 }
 public void eaten(){
-
   if(pac.getX()+13>=x&&pac.getX()<=x+13)
 if(pac.getY()+13>=y&&pac.getY()<=y+13){
   if(power==false){
   pac.deathSet();
   lives--;
   start=false;
+  show=false;
  // return false;
 }else{
 score+=200;
 eyes=true;
-xd=true;
 }
 }
 //return true;
@@ -208,17 +222,5 @@ xd=true;
 public void oftCheck(){
 di=Math.random();
   time=millis()+oft;
-}
-void ghostDeathSet(){
-tempx=x;
-tempy=y;
-check1=true;
-}
-boolean getCheck(){
-return check1;
-}
-void ghostDeath(){
-x=tempx;
-y=tempy;
 }
 }

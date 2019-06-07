@@ -1,16 +1,15 @@
 public class pacman{
 private int open=0;
-private int x=97;//335;
-private int y=361;//423;
-private int tempx, tempy;
+private int x=335;
+private int y=423;
 char lastd='r';
 boolean death=false;
 int pactimer;
 public pacman(){
 }
 void resetXY(){
-x=97;//335;
-y=361;//423;
+x=335;
+y=423;
 }
 public void display(){
   if(pac.pacDeath()==false){
@@ -195,8 +194,11 @@ death=true;
 pactimer=millis()+2000;
 }
 public boolean pacDeath(){
-if(millis()>=pactimer)
+if(millis()>=pactimer){
+show=true;
 return false;
+}
+show=true;
 return true;
 }
 }
