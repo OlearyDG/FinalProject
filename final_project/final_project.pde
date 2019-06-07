@@ -7,6 +7,7 @@ PImage bghost,rghost,pghost,oghost,powghost,ghosteye;
 private boolean start=false;
 boolean isLeft, isRight, isUp, isDown;
 boolean gameStart=false;
+boolean check=true;
 private int lives=3;
 pacman pac=new pacman();
 dots bit=new dots(255,425);
@@ -36,8 +37,9 @@ powghost=loadImage("powerghost.png");
 ghosteye=loadImage("ghosteyes.png");
 }
 public void startGame(){
-if(keyPressed&&key==' '){
+if(keyPressed&&key==' '&&check){
   start=true;
+  check=false;
 }
 }
 void keyPressed() {
@@ -165,8 +167,12 @@ ghost.add(new ghosts(2));
 ghost.add(new ghosts(3));
 ghost.add(new ghosts(4));
 }else if(lives>0){
-//for(dotint x:pellets)
-//x.eatReset();
+  if(dotcount==0){
+for(dotint x:pellets){
+x.eatReset();
+x.checkReset();
+  }
+  }
 pac.resetXY();
 for(ghosts x:ghost)
 x.resetXY();
