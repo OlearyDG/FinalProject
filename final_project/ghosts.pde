@@ -21,6 +21,7 @@ x=331;
 y=362;
 }
 public void display(){
+    System.out.println(eyes);
 if(pac.pacDeath()==false){
  /*
   if(start){
@@ -40,7 +41,7 @@ if(pac.pacDeath()==false){
 escape=false;
 }
 if(escape==false){
-if(!eyes){  
+if(!eyes){
 if(millis()>=time)
 oftCheck();
 if(di<=.25)
@@ -56,20 +57,20 @@ if(!power)
 image(checkGhost(), x, y, 25, 25);
 else
 image(powghost, x, y, 25, 25);
-}else {
+}else if(eyes){
   power=true;
-if(x<398)
+if(x<331)
 x+=speed;
-if(x>398)
+if(x>331)
 x-=speed;
-if(y<451)
+if(y<284)
 y+=speed;
-if(y>451)
+if(y>284)
 y-=speed;
 image(ghosteye, x, y, 25, 25);
-if(x==398&&y==451){
-  power=false;
+if(x==331&&y==284){
 eyes=false;
+  power=false;
 }
 }
 }
@@ -210,14 +211,17 @@ if(pac.getY()+13>=y&&pac.getY()<=y+13){
   lives--;
   start=false;
   show=false;
- // return false;
 }else{
 score+=200;
 eyes=true;
 }
 }
-//return true;
-
+}
+public void eyeSet(){
+eyes=false;
+}
+public void escapeSet(){
+escape=true;
 }
 public void oftCheck(){
 di=Math.random();

@@ -197,8 +197,10 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
     }
     }
 if(millis()>=powerTime){ 
-       for(ghosts z:ghost)
+       for(ghosts z:ghost){
 z.setPowerfal();
+z.eyeSet();
+}
 }
   for(ghosts x:ghost){
   x.display();
@@ -206,8 +208,10 @@ z.setPowerfal();
   }
 }else if(pac.pacDeath()){
 pac.resetXY();
-for(ghosts x:ghost)
+for(ghosts x:ghost){
 x.resetXY();
+x.escapeSet();
+}
   System.out.println("dead");
 text( "You Died", 310, 366 );
 
