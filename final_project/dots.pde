@@ -17,12 +17,16 @@ if(pac.getX()+13>=x&&pac.getX()<=x+13)
 if(pac.getY()+13>=y&&pac.getY()<=y+13){
 eat=true;
 score+=100;
+livesscore+=100;
 dotcount--;
 check=false;
 }
 }
 public void eatReset(){
 eat=false;
+}
+public void checkReset(){
+check=true;
 }
 public String toString(){
 return x+" "+y;

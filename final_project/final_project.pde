@@ -14,6 +14,7 @@ ArrayList<dotint> pellets=new ArrayList<dotint>();
 ArrayList<ghosts> ghost=new ArrayList<ghosts>();
 private int powerTime=-500;
 private int score=0;
+private int livesscore=0;
 private int dotcount;
 private boolean show=false;
 int deathTimer;
@@ -159,31 +160,67 @@ pellets.add(new powerDot(70,138));
 pellets.add(new powerDot(602,138));
 pellets.add(new powerDot(602,628));
 dotcount=pellets.size();
-System.out.println(dotcount);
 ghost.add(new ghosts(1));
 ghost.add(new ghosts(2));
 ghost.add(new ghosts(3));
 ghost.add(new ghosts(4));
-}else{
-for(dotint x:pellets)
+}else if(lives>0){
+//for(dotint x:pellets)
+//x.eatReset();
+pac.resetXY();
+for(ghosts x:ghost)
+x.resetXY();
+dotcount=pellets.size();
+}
+if(lives<=0){
+for(dotint x:pellets){
 x.eatReset();
+x.checkReset();
+}
+pac.resetXY();
+for(ghosts x:ghost)
+x.resetXY();
+dotcount=pellets.size();
+score=0;
+livesscore=0;
+lives=3;
+start=false;
+show=false;
 }
 }
 void draw(){
-  
   startGame();
 background(maze);
-text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
  if(start){
    show=true;
    if(!gameStart){
    restart();
    start=false;
    }
+   if(dotcount==0)
+   restart();
+   if(lives<=0)
+   restart();
  }
  if (pac.pacDeath()==false&&show){
+   if(lives==3){
+   image(pacright,45,45,25,25);
+   image(pacright,70,45,25,25);
+   image(pacright,95,45,25,25);
+   }else if(lives==2){
+   image(pacright,45,45,25,25);
+   image(pacright,70,45,25,25);
+   }else if(lives==1){
+   image(pacright,45,45,25,25);
+   }
     if(score>9999999)
     score=9999999;
+    if(livesscore>=57900){
+    livesscore-=57900;
+    lives++;
+    if(lives>3)
+    lives=3;
+    }
     text(score,590,26);
                  pac.display();
     for(dotint x: pellets){
@@ -191,7 +228,6 @@ text( "x: " + mouseX + " y: " + mouseY, mouseX, mouseY );
      if(x.getPower()){
      powerTime=millis()+4000;
      x.setpower();
-     System.out.println(powerTime);
      for(ghosts z:ghost)
      z.setPowertru();
     }
@@ -212,8 +248,6 @@ for(ghosts x:ghost){
 x.resetXY();
 x.escapeSet();
 }
-  System.out.println("dead");
 text( "You Died", 310, 366 );
-
 }
 }

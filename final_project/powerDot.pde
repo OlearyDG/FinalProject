@@ -17,12 +17,16 @@ if(pac.getY()+13>=Py&&pac.getY()<=Py+13){
 eat=true;
 power=true;
 score+=100;
+livesscore+=100;
 dotcount--;
 check=false;
 }
 }
 public void eatReset(){
 eat=false;
+}
+public void checkReset(){
+check=true;
 }
 public boolean getPower(){
 return power;

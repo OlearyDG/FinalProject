@@ -3,14 +3,13 @@ public class ghosts{
 private int gcolor=0;
 private int x=331;
 private int y=362;
-private int tempx, tempy;
 private double di=Math.random();
 private int oft=(int)Math.random()*2000+3000;
 private int time=5000;
 private int speed=2;
 char dir='q';
 char xdir='q';
-private boolean check1=false, power=false;
+private boolean power=false;
 private boolean eyes=false;
 private boolean escape=true;
   public ghosts(int c){
@@ -21,7 +20,6 @@ x=331;
 y=362;
 }
 public void display(){
-    System.out.println(eyes);
 if(pac.pacDeath()==false){
  /*
   if(start){
@@ -180,6 +178,7 @@ if(y<223&&y>140)
 stopMove();
 }
 public void stopMove(){
+  if(!escape){
 if(di<=.25)
 x-=speed;
 if(di>=.251&&di<=.5)
@@ -189,6 +188,7 @@ y+=speed;
 if(di>=.751)
 y-=speed;
 di=Math.random();
+}
 }
 public PImage checkGhost(){
 if(gcolor==1)
@@ -211,8 +211,10 @@ if(pac.getY()+13>=y&&pac.getY()<=y+13){
   lives--;
   start=false;
   show=false;
+  restart();
 }else{
 score+=200;
+livesscore+=200;
 eyes=true;
 }
 }
