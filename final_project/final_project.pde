@@ -174,8 +174,10 @@ x.checkReset();
   }
   }
 pac.resetXY();
-for(ghosts x:ghost)
+for(ghosts x:ghost){
 x.resetXY();
+x.escapeSet();
+}
 dotcount=pellets.size();
 }
 if(lives<=0){
@@ -184,8 +186,10 @@ x.eatReset();
 x.checkReset();
 }
 pac.resetXY();
-for(ghosts x:ghost)
+for(ghosts x:ghost){
 x.resetXY();
+x.escapeSet();
+}
 dotcount=pellets.size();
 score=0;
 livesscore=0;
@@ -203,8 +207,6 @@ background(maze);
    restart();
    start=false;
    }
-   if(dotcount==0)
-   restart();
    if(lives<=0)
    restart();
  }
@@ -227,7 +229,7 @@ background(maze);
     if(lives>3)
     lives=3;
     }
-    text(score,590,26);
+    text("Score: "+score,590,26);
                  pac.display();
     for(dotint x: pellets){
      x.display();
@@ -238,10 +240,11 @@ background(maze);
      z.setPowertru();
     }
     }
+    if(dotcount==0)
+    restart();
 if(millis()>=powerTime){ 
        for(ghosts z:ghost){
 z.setPowerfal();
-z.eyeSet();
 }
 }
   for(ghosts x:ghost){

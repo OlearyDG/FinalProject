@@ -21,13 +21,6 @@ y=362;
 }
 public void display(){
 if(pac.pacDeath()==false){
- /*
-  if(start){
-  y-=speed;
-  if(y<=275)
-  start=false;
-  }
-  */
   if(escape){
   if(x>=275&&x<=418)
   if(y>=299&&y<=405){
@@ -35,7 +28,7 @@ if(pac.pacDeath()==false){
   image(checkGhost(), x, y, 25, 25);
   }
   }
-  if(y<=299){
+  if(y<=299&&eyes==false){
 escape=false;
 }
 if(escape==false){
@@ -66,11 +59,11 @@ y+=speed;
 if(y>284)
 y-=speed;
 image(ghosteye, x, y, 25, 25);
-if(x==331&&y==284){
+}
+}
+if(x==331&&y==284&&eyes){
 eyes=false;
   power=false;
-}
-}
 }
 }
 }
@@ -178,7 +171,7 @@ if(y<223&&y>140)
 stopMove();
 }
 public void stopMove(){
-  if(!escape){
+  if(eyes==false){
 if(di<=.25)
 x-=speed;
 if(di>=.251&&di<=.5)
@@ -199,8 +192,6 @@ else if(gcolor==3)
  return pghost;
 else if(gcolor==4)
 return oghost;
-else if(eyes)
-return ghosteye;
 return powghost;
 }
 public void eaten(){
@@ -218,9 +209,6 @@ livesscore+=200;
 eyes=true;
 }
 }
-}
-public void eyeSet(){
-eyes=false;
 }
 public void escapeSet(){
 escape=true;
